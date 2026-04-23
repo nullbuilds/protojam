@@ -1,3 +1,3 @@
 @tool
 extends EditorPlugin
-## Initializes the plugin utils plugin.
+## Initializes the ProtoJam plugin utils plugin.

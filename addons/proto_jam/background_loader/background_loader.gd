@@ -1,3 +1,3 @@
 @tool
 extends EditorPlugin
-## Initializes the background loader plugin.
+## Initializes the ProtoJam background loader plugin.
