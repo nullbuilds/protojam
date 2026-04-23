@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AudioBusVolumeRangeSetting" format=3 uid="uid://bcxbqwt2pbfrx"]
+
+[ext_resource type="Script" uid="uid://dfh1tdnj5ex7u" path="res://addons/proto_jam/settings/audio_bus_volume_setting.gd" id="1_cwt82"]
+
+[resource]
+script = ExtResource("1_cwt82")
+bus_name = &"Master"
+default_value = 1.0
+setting_key = &"master_volume"
+metadata/_custom_type_script = "uid://dfh1tdnj5ex7u"
