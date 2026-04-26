@@ -1,6 +1,65 @@
 [gd_scene format=3 uid="uid://omcwv6fpn2mn"]
 
 [ext_resource type="Script" uid="uid://b0lx5cx7my1wx" path="res://scenes/main.gd" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://0f5q35nel3t3" path="res://addons/proto_jam/damage/hit_box_3d.gd" id="2_0wfyh"]
+[ext_resource type="Script" uid="uid://b6vbspfe2x06i" path="res://addons/proto_jam/damage/damage_box_3d.gd" id="3_sugp2"]
+[ext_resource type="Script" uid="uid://dmvlugoernyre" path="res://addons/proto_jam/damage/health_component.gd" id="4_jyhfs"]
+[ext_resource type="Script" uid="uid://bre6gg0epnl7l" path="res://addons/proto_jam/damage/hurt_box_3d.gd" id="5_tbgi4"]
+[ext_resource type="Script" uid="uid://b4v4uh1qs5wls" path="res://addons/proto_jam/damage/static_damage_generator.gd" id="6_tefeu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0wfyh"]
+
+[sub_resource type="Sky" id="Sky_sugp2"]
+sky_material = SubResource("ProceduralSkyMaterial_0wfyh")
+
+[sub_resource type="Environment" id="Environment_jyhfs"]
+background_mode = 2
+sky = SubResource("Sky_sugp2")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jyhfs"]
+
+[sub_resource type="Resource" id="Resource_o6xl0"]
+script = ExtResource("6_tefeu")
+metadata/_custom_type_script = "uid://b4v4uh1qs5wls"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tipki"]
 
 [node name="Main" type="Node" unique_id=132315365]
 script = ExtResource("1_o5qli")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=833416933]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 1, 2.4941661)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=514093517]
+environment = SubResource("Environment_jyhfs")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=231566840]
+transform = Transform3D(0.25881907, -0.4829629, 0.8365163, 0, 0.8660254, 0.50000006, -0.9659258, -0.12940954, 0.22414389, 0, 1, 0)
+
+[node name="HealthComponent" type="Node" parent="." unique_id=270442722]
+script = ExtResource("4_jyhfs")
+metadata/_custom_type_script = "uid://dmvlugoernyre"
+
+[node name="HitBox3D" type="Node3D" parent="." unique_id=1551097891 node_paths=PackedStringArray("damage_parent")]
+script = ExtResource("2_0wfyh")
+damage_parent = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://0f5q35nel3t3"
+
+[node name="DamageBox3D" type="Area3D" parent="HitBox3D" unique_id=1984627292]
+script = ExtResource("3_sugp2")
+metadata/_custom_type_script = "uid://b6vbspfe2x06i"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox3D/DamageBox3D" unique_id=620378834]
+shape = SubResource("SphereShape3D_jyhfs")
+
+[node name="HurtBox3D" type="Node3D" parent="." unique_id=1311179082]
+script = ExtResource("5_tbgi4")
+damage_generator = SubResource("Resource_o6xl0")
+metadata/_custom_type_script = "uid://bre6gg0epnl7l"
+
+[node name="DamageBox3D" type="Area3D" parent="HurtBox3D" unique_id=1645919584]
+script = ExtResource("3_sugp2")
+metadata/_custom_type_script = "uid://b6vbspfe2x06i"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox3D/DamageBox3D" unique_id=1943506583]
+shape = SubResource("SphereShape3D_tipki")
