@@ -23,7 +23,7 @@ gdscript/warnings/directory_rules={
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/proto_jam/background_loader/plugin.cfg", "res://addons/proto_jam/plugin.cfg", "res://addons/proto_jam/plugin_helper/plugin.cfg", "res://addons/proto_jam/settings/plugin.cfg", "res://addons/proto_jam/utils/plugin.cfg")
+enabled=PackedStringArray("res://addons/proto_jam/background_loader/plugin.cfg", "res://addons/proto_jam/damage/plugin.cfg", "res://addons/proto_jam/plugin.cfg", "res://addons/proto_jam/plugin_helper/plugin.cfg", "res://addons/proto_jam/settings/plugin.cfg", "res://addons/proto_jam/utils/plugin.cfg")
 
 [physics]
 
