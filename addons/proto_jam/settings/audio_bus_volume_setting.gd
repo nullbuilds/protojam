@@ -37,11 +37,12 @@ func get_bus_index() -> int:
 ## Users must listen for [signal AbstractSetting.value_changed] and call this
 ## accordingly. This is done to allow for audio ducking and other volume effects
 ## which may override the setting.
-func apply(multiplier: float = 1.0) -> void:
+func apply(multiplier: float = 1.0) -> Error:
 	var bus_index: int = get_bus_index()
 	if bus_index < 0:
 		push_error("Failed to set volume of audio bus \"%s\"; no such bus" % bus_name)
-		return
+		return Error.ERR_DOES_NOT_EXIST
 	
 	var linear_volume: float = get_value() * max(multiplier, 0.0)
 	AudioServer.set_bus_volume_linear(bus_index, linear_volume)
+	return Error.OK
