@@ -15,6 +15,10 @@ run/main_scene="uid://omcwv6fpn2mn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+AudioManager="*uid://bdys4448gq7vu"
+
 [debug]
 
 gdscript/warnings/directory_rules={
@@ -23,7 +27,7 @@ gdscript/warnings/directory_rules={
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/proto_jam/background_loader/plugin.cfg", "res://addons/proto_jam/damage/plugin.cfg", "res://addons/proto_jam/plugin.cfg", "res://addons/proto_jam/plugin_helper/plugin.cfg", "res://addons/proto_jam/settings/plugin.cfg", "res://addons/proto_jam/utils/plugin.cfg")
+enabled=PackedStringArray("res://addons/proto_jam/audio/plugin.cfg", "res://addons/proto_jam/background_loader/plugin.cfg", "res://addons/proto_jam/damage/plugin.cfg", "res://addons/proto_jam/plugin.cfg", "res://addons/proto_jam/plugin_helper/plugin.cfg", "res://addons/proto_jam/settings/plugin.cfg", "res://addons/proto_jam/utils/plugin.cfg")
 
 [physics]
 
