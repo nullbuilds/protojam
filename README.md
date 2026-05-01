@@ -35,6 +35,12 @@ Yes! ...but you shouldn't. This addon is optimized for rapid development. Perfor
 Possibly - search the [issues](/issues) and feel free to log a new request there if one hasn't already been made.
 </details>
 
-Proudly made for humans by humans #NoAI
+## Contributing
 
+Contributions are always welcome! Check out the [contributing guide][contributing-guide] to get started.
+
+Proudly made for humans, by humans [#NoAI][no-ai]
+
+[contributing-guide]: .github/CONTRIBUTING.md
+[no-ai]: https://itch.io/games/tag-no-ai
 [godot]: https://godotengine.org/
