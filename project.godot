@@ -25,9 +25,18 @@ gdscript/warnings/directory_rules={
 "res://addons": 1
 }
 
+[display]
+
+window/size/viewport_width=256
+window/size/viewport_height=224
+window/size/window_width_override=1024
+window/size/window_height_override=896
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/proto_jam/audio/plugin.cfg", "res://addons/proto_jam/background_loader/plugin.cfg", "res://addons/proto_jam/damage/plugin.cfg", "res://addons/proto_jam/plugin.cfg", "res://addons/proto_jam/plugin_helper/plugin.cfg", "res://addons/proto_jam/settings/plugin.cfg", "res://addons/proto_jam/utils/plugin.cfg")
+enabled=PackedStringArray("res://addons/proto_jam/audio/plugin.cfg", "res://addons/proto_jam/background_loader/plugin.cfg", "res://addons/proto_jam/damage/plugin.cfg", "res://addons/proto_jam/materials/plugin.cfg", "res://addons/proto_jam/plugin.cfg", "res://addons/proto_jam/plugin_helper/plugin.cfg", "res://addons/proto_jam/settings/plugin.cfg", "res://addons/proto_jam/utils/plugin.cfg")
 
 [physics]
 
