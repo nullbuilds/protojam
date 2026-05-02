@@ -10,6 +10,7 @@ An extensive library for game jams and rapid prototyping in [Godot].
 * :feelsgood: Chainable health and damage framework
 * :speaker: Global music manager
 * :art: Prototyping material collection
+* :brain: Node-based state machine
 
 ## Compatibility
 
@@ -23,7 +24,7 @@ Each class is extensively documented. Check their docs in the Godot IDE for more
 
 <details>
 <summary>Can I use this in a game jam?</summary>
-This will vary by jam. Always check with the jam organizers if you are unsure.
+This addon is quite large which may be against the rules for some jams. Always check with the jam organizers if you are unsure.
 </details>
 
 <details>

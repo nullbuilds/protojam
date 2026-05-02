@@ -10,6 +10,7 @@ const _SUB_PLUGINS: Array[String] = [
 	"damage",
 	"audio",
 	"materials",
+	"state_machine",
 ]
 
 func _enable_plugin() -> void:
