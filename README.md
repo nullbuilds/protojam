@@ -9,6 +9,7 @@ An extensive library for game jams and rapid prototyping in [Godot].
 * :construction_worker: Commonly needed utilities
 * :feelsgood: Chainable health and damage framework
 * :speaker: Global music manager
+* :art: Prototyping material collection
 
 ## Compatibility
 
