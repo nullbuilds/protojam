@@ -9,6 +9,7 @@ const _SUB_PLUGINS: Array[String] = [
 	"background_loader",
 	"damage",
 	"audio",
+	"materials",
 ]
 
 func _enable_plugin() -> void:

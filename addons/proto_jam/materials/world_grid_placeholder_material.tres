@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://k6hejte6fm85"]
+
+[ext_resource type="Shader" uid="uid://bjpnmnrog34u8" path="res://addons/proto_jam/materials/checkerboard_shader.gdshader" id="1_ysiam"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ysiam")
+shader_parameter/color_a = Color(1, 0, 1, 1)
+shader_parameter/color_b = Color(0, 0, 0, 1)
+shader_parameter/cells = 4.0
+shader_parameter/world_coordinates = true
