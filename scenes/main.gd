@@ -4,7 +4,6 @@ extends Node
 
 const _MASTER_VOLUME_SETTING: AudioBusVolumeRangeSetting = preload("uid://bcxbqwt2pbfrx")
 const _MUSIC_VOLUME_SETTING: AudioBusVolumeRangeSetting = preload("uid://q75uxrblo753")
-const _TEST_MUSIC_PATH: String = "uid://cegjitqtkujro"
 
 ## Perform initial setup like loading settings.
 func _ready() -> void:
@@ -22,7 +21,6 @@ func _ready() -> void:
 	
 	AudioManager.sync_bus_volume(_MASTER_VOLUME_SETTING)
 	AudioManager.sync_bus_volume(_MUSIC_VOLUME_SETTING)
-	AudioManager.play_music_loop(_TEST_MUSIC_PATH)
 
 
 func _notification(what: int) -> void:
