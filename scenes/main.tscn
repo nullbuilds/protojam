@@ -13,7 +13,7 @@ ambient_light_color = Color(0.7162962, 0.7162962, 0.7162962, 1)
 script = ExtResource("1_o5qli")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=833416933]
-transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 1, 2)
+transform = Transform3D(1, 0, 0, 0, 0.9659259, 0.25881907, 0, -0.25881907, 0.9659258, 0, 2, 3)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=514093517]
 environment = SubResource("Environment_jyhfs")
