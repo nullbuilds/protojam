@@ -11,6 +11,7 @@ An extensive library for game jams and rapid prototyping in [Godot].
 * :speaker: Global music manager
 * :art: Prototyping material collection
 * :brain: Node-based state machine
+* :arrow_up_down: Item bob component
 
 ## Compatibility
 
