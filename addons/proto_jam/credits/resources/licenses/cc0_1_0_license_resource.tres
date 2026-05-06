@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CreditableLicense" format=3 uid="uid://bmq33qtfq0ws3"]
+
+[ext_resource type="Script" uid="uid://byhpdtliggogu" path="res://addons/proto_jam/credits/creditable_license.gd" id="1_5yof3"]
+
+[resource]
+script = ExtResource("1_5yof3")
+name = "Creative Commons Zero v1.0 Universal"
+short_name = "CC0 1.0"
+metadata/_custom_type_script = "uid://byhpdtliggogu"
