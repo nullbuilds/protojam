@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CreditableLicense" format=3 uid="uid://5qrynwyr43ob"]
+
+[ext_resource type="Script" uid="uid://byhpdtliggogu" path="res://addons/proto_jam/credits/creditable_license.gd" id="1_gis1e"]
+
+[resource]
+script = ExtResource("1_gis1e")
+name = "Creative Commons Attribution-ShareAlike 4.0 International"
+short_name = "CC BY-SA 4.0"
+metadata/_custom_type_script = "uid://byhpdtliggogu"

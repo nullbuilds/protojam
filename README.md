@@ -6,6 +6,7 @@ An extensive library for game jams and rapid prototyping in [Godot].
 
 * :thread: Easy background resource loading
 * :gear: Data-driven game settings
+* :bookmark_tabs: Data-driven credit model
 * :construction_worker: Commonly needed utilities
 * :feelsgood: Chainable health and damage framework
 * :speaker: Global music manager
