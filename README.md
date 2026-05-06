@@ -8,6 +8,7 @@ An extensive library for game jams and rapid prototyping in [Godot].
 * :gear: Data-driven game settings
 * :bookmark_tabs: Data-driven credit model
 * :construction_worker: Commonly needed utilities
+* :waning_crescent_moon: Screen transitions
 * :feelsgood: Chainable health and damage framework
 * :speaker: Global music manager
 * :art: Prototyping material collection
