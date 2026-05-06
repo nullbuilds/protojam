@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AudioBusVolumeRangeSetting" format=3 uid="uid://bcxbqwt2pbfrx"]
 
-[ext_resource type="Script" uid="uid://dfh1tdnj5ex7u" path="res://addons/proto_jam/settings/audio_bus_volume_setting.gd" id="1_cwt82"]
+[ext_resource type="Script" uid="uid://dfh1tdnj5ex7u" path="res://addons/proto_jam/settings/scripts/audio_bus_volume_setting.gd" id="1_cwt82"]
 
 [resource]
 script = ExtResource("1_cwt82")

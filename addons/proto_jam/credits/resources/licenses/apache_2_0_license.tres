@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CreditableLicense" format=3 uid="uid://bmn551wje4eev"]
 
-[ext_resource type="Script" uid="uid://byhpdtliggogu" path="res://addons/proto_jam/credits/creditable_license.gd" id="1_bmvfj"]
+[ext_resource type="Script" uid="uid://byhpdtliggogu" path="res://addons/proto_jam/credits/scripts/creditable_license.gd" id="1_bmvfj"]
 
 [resource]
 script = ExtResource("1_bmvfj")

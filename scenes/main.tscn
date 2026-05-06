@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://omcwv6fpn2mn"]
 
 [ext_resource type="Script" uid="uid://b0lx5cx7my1wx" path="res://scenes/main.gd" id="1_o5qli"]
-[ext_resource type="Material" uid="uid://b5r46tx4p3w61" path="res://addons/proto_jam/materials/world_grid_dark_material.tres" id="3_sugp2"]
+[ext_resource type="Material" uid="uid://b5r46tx4p3w61" path="res://addons/proto_jam/materials/resources/materials/world_grid_dark_material.tres" id="3_sugp2"]
 
 [sub_resource type="Environment" id="Environment_jyhfs"]
 background_mode = 1
