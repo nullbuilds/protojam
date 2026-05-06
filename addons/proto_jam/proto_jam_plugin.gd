@@ -6,6 +6,7 @@ const _SUB_PLUGINS: Array[String] = [
 	"plugin_helper",
 	"utils",
 	"settings",
+	"credits",
 	"background_loader",
 	"damage",
 	"audio",
