@@ -36,7 +36,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/proto_jam/audio/plugin.cfg", "res://addons/proto_jam/background_loader/plugin.cfg", "res://addons/proto_jam/damage/plugin.cfg", "res://addons/proto_jam/materials/plugin.cfg", "res://addons/proto_jam/plugin.cfg", "res://addons/proto_jam/plugin_helper/plugin.cfg", "res://addons/proto_jam/props/plugin.cfg", "res://addons/proto_jam/settings/plugin.cfg", "res://addons/proto_jam/state_machine/plugin.cfg", "res://addons/proto_jam/utils/plugin.cfg")
+enabled=PackedStringArray("res://addons/proto_jam/audio/plugin.cfg", "res://addons/proto_jam/background_loader/plugin.cfg", "res://addons/proto_jam/credits/plugin.cfg", "res://addons/proto_jam/damage/plugin.cfg", "res://addons/proto_jam/materials/plugin.cfg", "res://addons/proto_jam/plugin.cfg", "res://addons/proto_jam/plugin_helper/plugin.cfg", "res://addons/proto_jam/props/plugin.cfg", "res://addons/proto_jam/settings/plugin.cfg", "res://addons/proto_jam/state_machine/plugin.cfg", "res://addons/proto_jam/utils/plugin.cfg")
 
 [physics]
 
