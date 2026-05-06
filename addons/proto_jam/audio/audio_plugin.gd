@@ -5,7 +5,7 @@ extends EditorPlugin
 var _audio_manager: PluginAutoloadSingleton = \
 		PluginAutoloadSingleton.new(
 			"AudioManager",
-			PluginUtils.get_plugin_script_path(self, "audio_manager.gd")
+			PluginUtils.get_plugin_script_path(self, "scripts/audio_manager.gd")
 		)
 
 func _enable_plugin() -> void:

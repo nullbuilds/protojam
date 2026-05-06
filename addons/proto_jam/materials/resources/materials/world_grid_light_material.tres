@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://dj4ad4lxxi6bi"]
 
-[ext_resource type="Shader" uid="uid://bjpnmnrog34u8" path="res://addons/proto_jam/materials/checkerboard_shader.gdshader" id="1_mlqm7"]
+[ext_resource type="Shader" uid="uid://bjpnmnrog34u8" path="res://addons/proto_jam/materials/resources/shaders/checkerboard_shader.gdshader" id="1_mlqm7"]
 
 [resource]
 render_priority = 0
