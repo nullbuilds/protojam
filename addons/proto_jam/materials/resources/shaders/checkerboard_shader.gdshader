@@ -1,4 +1,7 @@
 shader_type spatial;
+// Basic checkboard shader.
+// Licensed under CC0 from Null Builds
+// See https://godotshaders.com/shader/3d-grid/
 
 // An imperceptably small value used for fuzzy float comparisons
 const float EPSILON = 0.0001;
