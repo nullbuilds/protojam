@@ -1,6 +1,9 @@
-## ProtoJam
-
-An extensive library for game jams and rapid prototyping in [Godot].
+<p align="center">
+  <img src="docs/media/protojam_banner.png" />
+</p>
+<p align="center">
+  An extensive library for game jams and rapid prototyping in <a href="https://godotengine.org/" target="_blank">Godot</a>
+</p>
 
 ## Features
 
@@ -55,5 +58,4 @@ Proudly made for humans, by humans [#NoAI][no-ai]
 
 [contributing-guide]: .github/CONTRIBUTING.md
 [no-ai]: https://itch.io/games/tag-no-ai
-[godot]: https://godotengine.org/
 [kenney]: https://kenney.nl/
