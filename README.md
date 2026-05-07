@@ -11,6 +11,7 @@ An extensive library for game jams and rapid prototyping in [Godot].
 * :waning_crescent_moon: Scene swap and transition framework
 * :feelsgood: Chainable health and damage framework
 * :speaker: Global music manager
+* :mouse: Easy mouse mode management
 * :art: Prototyping material collection
 * :brain: Node-based state machine
 * :arrow_up_down: Item bob component

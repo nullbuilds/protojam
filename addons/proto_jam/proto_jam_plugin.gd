@@ -14,6 +14,7 @@ const _SUB_PLUGINS: Array[String] = [
 	"state_machine",
 	"props",
 	"transition",
+	"input",
 ]
 
 func _enable_plugin() -> void:
