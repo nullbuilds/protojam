@@ -100,6 +100,11 @@ func transition_out(reset: bool = false) -> Error:
 	return Error.OK
 
 
+## Returns if this transition is currently transitioning.
+func is_transitioning() -> bool:
+	return _state in [TransitionState.TRANSITIONING_IN, TransitionState.TRANSITIONING_OUT]
+
+
 ## Indicates a transition in is complete.
 ## 
 ## Custom implementations should call this when fully transitioned in to signal
