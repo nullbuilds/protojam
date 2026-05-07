@@ -1,0 +1,37 @@
+@tool
+class_name GlobalMusicPlayer
+extends Node
+## Plays a music loop automatically on [method _ready] using the [AudioManager].
+## 
+## This is preferable for background music as it will automatically fade to a
+## new song during scene transitions while a standard [AudioPlayer] will stop
+## abruptly when it gets freed.
+
+## The path to the music to play.
+## 
+## Changing this path will cause the music to automatically transition.
+@export_file("*.ogg", "*.wav", "*.mp3") var music_path: String = "":
+	set(value):
+		music_path = value
+		update_configuration_warnings()
+		
+		if not is_node_ready():
+			await ready
+		
+		_play_loop()
+
+
+func _get_configuration_warnings() -> PackedStringArray:
+	var warnings: PackedStringArray = []
+	
+	if music_path.is_empty():
+		warnings.push_back("A music_path is required for GlobalMusicPlayer to work. Assign a path.")
+	
+	return warnings
+
+
+func _play_loop() -> void:
+	if not music_path.is_empty():
+		AudioManager.play_music_loop(music_path)
+	else:
+		push_error("Music player \"%s\" failed to play; no music_path is empty." % get_path())
