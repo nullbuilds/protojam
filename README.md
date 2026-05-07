@@ -1,4 +1,6 @@
-## ProtoJam
+<p align="center">
+  <img src="docs/media/protojam.png" />
+</p>
 
 An extensive library for game jams and rapid prototyping in [Godot].
 
