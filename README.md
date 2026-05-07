@@ -8,7 +8,7 @@ An extensive library for game jams and rapid prototyping in [Godot].
 * :gear: Data-driven game settings
 * :bookmark_tabs: Data-driven credit model
 * :construction_worker: Commonly needed utilities
-* :waning_crescent_moon: Screen transitions
+* :waning_crescent_moon: Scene swap and transition framework
 * :feelsgood: Chainable health and damage framework
 * :speaker: Global music manager
 * :art: Prototyping material collection
@@ -44,8 +44,15 @@ Possibly - search the [issues](/issues) and feel free to log a new request there
 
 Contributions are always welcome! Check out the [contributing guide][contributing-guide] to get started.
 
+## License
+
+The code for this project is MIT licensed.
+
+Resources for the example project in the [/resources folder](/resources) are licensed from [Kenney] under the Creative Commons Zero license.
+
 Proudly made for humans, by humans [#NoAI][no-ai]
 
 [contributing-guide]: .github/CONTRIBUTING.md
 [no-ai]: https://itch.io/games/tag-no-ai
 [godot]: https://godotengine.org/
+[kenney]: https://kenney.nl/
