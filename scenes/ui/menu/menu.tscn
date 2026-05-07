@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c82jdhh45n2n8"]
+
+[ext_resource type="Script" uid="uid://cqq45f6xjjfw0" path="res://scenes/ui/menu/menu.gd" id="1_h1w4e"]
+[ext_resource type="Script" uid="uid://b7gvus0wbhkxn" path="res://addons/proto_jam/audio/scripts/global_music_player.gd" id="2_q18yf"]
+
+[node name="Menu" type="CanvasLayer" unique_id=2083191215]
+script = ExtResource("1_h1w4e")
+
+[node name="GlobalMusicPlayer" type="Node" parent="." unique_id=1035501790]
+script = ExtResource("2_q18yf")
+music_path = "uid://csad32essx2pi"
+metadata/_custom_type_script = "uid://b7gvus0wbhkxn"
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1242215588]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=1715758988]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="PlayButton" type="Button" parent="MarginContainer/PanelContainer" unique_id=1896717662]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "PLAY"

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://df5fs5t16rhiw"]
+
+[ext_resource type="Script" uid="uid://dgkc1hnvcxkm7" path="res://scenes/application/application.gd" id="1_tkvwx"]
+[ext_resource type="Script" uid="uid://c20bs0sh35l8v" path="res://addons/proto_jam/transition/scripts/node_swapper.gd" id="2_v6fpa"]
+[ext_resource type="Script" uid="uid://drahsx1yu2ncj" path="res://addons/proto_jam/transition/scripts/luminance_mask_transition_provider.gd" id="3_a6bl6"]
+
+[sub_resource type="Gradient" id="Gradient_3axgt"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tbgi4"]
+gradient = SubResource("Gradient_3axgt")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Resource" id="Resource_8ngdy"]
+script = ExtResource("3_a6bl6")
+canvas_layer = 2
+mask_texture = SubResource("GradientTexture2D_tbgi4")
+metadata/_custom_type_script = "uid://drahsx1yu2ncj"
+
+[node name="Application" type="Node" unique_id=1474028461]
+script = ExtResource("1_tkvwx")
+
+[node name="NodeSwapper" type="Node" parent="." unique_id=822658189]
+unique_name_in_owner = true
+process_mode = 3
+script = ExtResource("2_v6fpa")
+transition_provider = SubResource("Resource_8ngdy")
+metadata/_custom_type_script = "uid://c20bs0sh35l8v"
