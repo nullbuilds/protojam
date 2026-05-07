@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cqq45f6xjjfw0" path="res://scenes/ui/menu/menu.gd" id="1_h1w4e"]
 [ext_resource type="Script" uid="uid://b7gvus0wbhkxn" path="res://addons/proto_jam/audio/scripts/global_music_player.gd" id="2_q18yf"]
+[ext_resource type="Script" uid="uid://dnf7o262ku7rc" path="res://addons/proto_jam/input/scripts/mouse_mode_controller.gd" id="3_ldhvw"]
 
 [node name="Menu" type="CanvasLayer" unique_id=2083191215]
 script = ExtResource("1_h1w4e")
@@ -10,6 +11,12 @@ script = ExtResource("1_h1w4e")
 script = ExtResource("2_q18yf")
 music_path = "uid://csad32essx2pi"
 metadata/_custom_type_script = "uid://b7gvus0wbhkxn"
+
+[node name="MouseModeController" type="Node" parent="." unique_id=1720189021]
+script = ExtResource("3_ldhvw")
+priority = 2
+mouse_mode = 0
+metadata/_custom_type_script = "uid://dnf7o262ku7rc"
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1242215588]
 anchors_preset = 15
