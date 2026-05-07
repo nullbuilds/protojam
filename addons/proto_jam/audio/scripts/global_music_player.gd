@@ -13,12 +13,14 @@ extends Node
 @export_file("*.ogg", "*.wav", "*.mp3") var music_path: String = "":
 	set(value):
 		music_path = value
-		update_configuration_warnings()
 		
-		if not is_node_ready():
-			await ready
-		
-		_play_loop()
+		if not Engine.is_editor_hint():
+			if not is_node_ready():
+				await ready
+			
+			_play_loop()
+		else:
+			update_configuration_warnings()
 
 
 func _get_configuration_warnings() -> PackedStringArray:
