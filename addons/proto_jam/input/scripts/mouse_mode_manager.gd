@@ -13,6 +13,10 @@ var _highest_priority_mode: Input.MouseMode = Input.MouseMode.MOUSE_MODE_VISIBLE
 # Mutex gating access to the manager to ensure thread-safety.
 var _mutex: Mutex = Mutex.new()
 
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+
+
 func _process(_delta: float) -> void:
 	if _has_request:
 		_change_mouse_mode()
