@@ -10,7 +10,7 @@ extends Node
 ## defined, the damage object will contain the result of the mutation;
 ## otherwise, it will be the raw damage received. The [member Damage.amount] may
 ## exceed the health component's remaining health.
-signal damage_taken(damage: Damage, remaining_health: float)
+signal damage_taken(remaining_health: float, damage: Damage)
 
 ## Emitted to indicate the health has been depleted.
 ## 
@@ -197,7 +197,7 @@ func _subtract_health(damage: Damage, ignore_invincibility: bool) -> Damage:
 	if use_integer_health:
 		_health = floor(_health)
 	
-	damage_taken.emit(applied_damage)
+	damage_taken.emit(_health, applied_damage)
 	
 	if _health <= 0:
 		_dead = true
