@@ -12,7 +12,7 @@ var _music_stream_indices: Dictionary[String, int] = {}
 var _music_bus: String = "Music"
 var _music_fade_beats: float = 1.0
 
-func _enter_tree() -> void:
+func _ready() -> void:
 	_music_player.stream = _music_stream
 	_music_player.process_mode = Node.PROCESS_MODE_ALWAYS
 	_update_music_stream()
