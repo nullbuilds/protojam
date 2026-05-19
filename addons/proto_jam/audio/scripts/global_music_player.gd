@@ -23,6 +23,8 @@ extends Node
 			update_configuration_warnings()
 
 
+var _audio_manager: Memoizer = Memoizer.new(_get_audio_manager)
+
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: PackedStringArray = []
 	
@@ -34,6 +36,20 @@ func _get_configuration_warnings() -> PackedStringArray:
 
 func _play_loop() -> void:
 	if not music_path.is_empty():
-		AudioManager.play_music_loop(music_path)
+		var audio_manager: Node = await _audio_manager.get_value()
+		if is_instance_valid(audio_manager):
+			audio_manager.call("play_music_loop", music_path)
+		else:
+			push_error("Failed to get play music loop; AudioManager autoload is not present; did you forget to enable the ProtoJam plugin?")
 	else:
 		push_error("Music player \"%s\" failed to play; no music_path is empty." % get_path())
+
+
+## Fetches the audio manager autoload without referencing its type.
+## 
+## Users should not call this. Use [AudioManager] instead.
+func _get_audio_manager() -> Node:
+	if has_node("/root/AudioManager"):
+		return get_node("/root/AudioManager")
+	
+	return null
