@@ -62,7 +62,9 @@ func _get_configuration_warnings() -> PackedStringArray:
 	return warnings
 
 
+## Bobs the target node.
 ## 
+## Users should not call this directly.
 func _bob_target(delta: float) -> void:
 	var target_position: Vector3 = target.global_position
 	var phase_offset: float = (target_position.z + target_position.x) * phase_shift
