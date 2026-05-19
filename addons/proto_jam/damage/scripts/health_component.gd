@@ -18,8 +18,8 @@ signal damage_taken(remaining_health: float, damage: Damage)
 ## applied.
 signal killed(damage: Damage)
 
-## The maximum allowed health.
 @export_group("Health")
+## The maximum allowed health.
 @export var max_health: float = 1.0
 
 ## The initial health.
@@ -32,6 +32,7 @@ signal killed(damage: Damage)
 ## A damage amount of [code]0.1[/code] would be rounded to [code]1.0[/code].
 @export var use_integer_health: bool = false
 
+@export_group("Damage")
 ## The damage source layers this health component can be damaged by.
 ## 
 ## [b]Note:[/b] Damage will not be received unless it orignated from a
@@ -40,7 +41,6 @@ signal killed(damage: Damage)
 ## [b]Note:[/b] These are not related to avoidance flags in any way. Limitations
 ## in Godot's export system require layers to be one of the hardcoded types and
 ## avoidance flags were chosen as they are the least likely to be used.
-@export_group("Damage")
 @export_flags_avoidance var source_mask: int = 1
 
 ## The damage type layers this health component can be damaged by.
@@ -71,8 +71,8 @@ signal killed(damage: Damage)
 		damage_parent = value
 		update_configuration_warnings()
 
-## Ignores all incoming damage when set.
 @export_group("Invincibility")
+## Ignores all incoming damage when set.
 @export var invulnerable: bool = false
 
 ## Sets whether the health component has invincibility frames.
