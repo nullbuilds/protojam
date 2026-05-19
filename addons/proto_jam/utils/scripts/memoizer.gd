@@ -28,10 +28,10 @@ func _init(provider: Callable, validator: Callable = Callable()) -> void:
 ## invalid.
 func get_value() -> Variant:
 	if _value is Object and not is_instance_valid(_value):
-		_value = _provider.call()
+		_value = await _provider.call()
 	elif null == _value:
-		_value = _provider.call()
-	elif _validator.is_valid() and not _validator.call(_value):
-		_value = _provider.call()
+		_value = await _provider.call()
+	elif _validator.is_valid() and not await _validator.call(_value):
+		_value = await _provider.call()
 	
 	return _value
