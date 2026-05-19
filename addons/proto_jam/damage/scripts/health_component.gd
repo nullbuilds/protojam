@@ -3,6 +3,11 @@ class_name HealthComponent
 extends Node
 ## Tracks an entities health and vulnerabily state.
 
+## Emitted any time [member health] changes.
+## 
+## Emitted before [signal damage_taken].
+signal health_changed(remaining_health: float)
+
 ## Emitted when the health component has received damage.
 ## 
 ## This is only triggered when the damage was successfully filtered by
@@ -20,17 +25,52 @@ signal killed(damage: Damage)
 
 @export_group("Health")
 ## The maximum allowed health.
-@export var max_health: float = 1.0
+@export var max_health: float = 1.0:
+	set(value):
+		max_health = value
+		health = health # Force setter to run to re-compute health
 
-## The initial health.
-## 
-## This value will be limited by [member max_health].
-@export var initial_health: float = 1.0
 
-## Forces all health calculations to be rounded up to the nearest integer.
+## Whether [member health] will be set to [member max_health] on
+## [mehtod Node._ready].
+@export var spawn_at_max_health: bool = true
+
+## The health of the component.
 ## 
-## A damage amount of [code]0.1[/code] would be rounded to [code]1.0[/code].
-@export var use_integer_health: bool = false
+## This value will be limited by [member max_health]. A negative value will
+## cause health to be reset to [member max_health].
+##
+## [b]Note:[/b] Setting health directly will [b]NOT[/b] trigger
+## [signal damage_taken] or [signal killed] signals. Use [method apply_damage]
+## to damage this component and emit these signals.
+@export var health: float = 1.0:
+	set(value):
+		value = clampf(value, 0.0, max_health)
+		
+		if use_integer_health:
+			value = floor(value)
+		
+		var old_health: float = health
+		health = value
+		
+		if health > 0.0:
+			# Unset death flag if health becomes greater than zero but do not
+			# set it when zero as death can only come from the result of damage.
+			_dead = false
+		
+		if not is_equal_approx(old_health, health):
+			health_changed.emit(health)
+
+
+## Forces all health calculations to be rounded down to the nearest integer.
+## 
+## Damage amounts are rounded up. A value of [code]0.1[/code] would be rounded
+## to [code]1.0[/code].
+@export var use_integer_health: bool = false:
+	set(value):
+		use_integer_health = value
+		health = health # Force setter to run to re-compute health
+
 
 @export_group("Damage")
 ## The damage source layers this health component can be damaged by.
@@ -86,18 +126,13 @@ signal killed(damage: Damage)
 ## Used only when [member i_frames_enabled] is [code]true[/code].
 @export var i_frame_duration: float = 0.25
 
-var _health: float = 0.0
 var _has_temporary_invincibility: bool = false
 var _dead: bool = false
 var _i_frame_timer: SceneTreeTimer = null
 
 func _ready() -> void:
-	var health: float = min(initial_health, max_health)
-	
-	if use_integer_health:
-		health = ceilf(health)
-	
-	_health = health
+	if spawn_at_max_health:
+		health = max_health
 
 
 func _get_configuration_warnings() -> PackedStringArray:
@@ -145,7 +180,7 @@ func apply_damage(damage: Damage) -> Damage:
 ## [member mutator] is not invoked.
 func kill() -> void:
 	var damage: Damage = Damage.new()
-	damage.amount = _health
+	damage.amount = health
 	damage.source_layer = source_mask
 	damage.type_layer = type_mask
 	damage.lethal = true
@@ -183,23 +218,21 @@ func _subtract_health(damage: Damage, ignore_invincibility: bool) -> Damage:
 	
 	# Update damage amount to health if lethal
 	if damage.lethal:
-		damage.amount = _health
+		damage.amount = health
 	
 	if use_integer_health:
 		applied_damage.amount = ceilf(applied_damage.amount)
 	
-	# Clamp damage to how much we can actually receive
-	applied_damage.amount = min(applied_damage.amount, _health)
+	# Clamp damage to how much we can actually receive. This is done to ensure
+	# damage_taken emits the actual amount taken and not just how much was
+	# received.
+	applied_damage.amount = min(applied_damage.amount, health)
 	
-	# Clamp subtraction to prevent possible floating point errors.
-	_health = max(_health - applied_damage.amount, 0.0)
+	health -= applied_damage.amount
 	
-	if use_integer_health:
-		_health = floor(_health)
+	damage_taken.emit(health, applied_damage)
 	
-	damage_taken.emit(_health, applied_damage)
-	
-	if _health <= 0:
+	if health <= 0:
 		_dead = true
 		killed.emit(damage)
 	else:
