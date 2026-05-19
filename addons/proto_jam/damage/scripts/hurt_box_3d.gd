@@ -65,6 +65,10 @@ var _damage_boxes: Array[DamageBox3D] = []
 func _ready() -> void:
 	child_entered_tree.connect(_on_child_entered_tree)
 	child_exiting_tree.connect(_on_child_exiting_tree)
+	
+	for node in get_children(true):
+		if node is DamageBox3D:
+			_add_damage_box(node)
 
 
 func _get_configuration_warnings() -> PackedStringArray:
