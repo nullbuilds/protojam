@@ -31,9 +31,25 @@ extends Node
 ## The desired mouse mode.
 @export var mouse_mode: Input.MouseMode = Input.MouseMode.MOUSE_MODE_CAPTURED
 
+var _mouse_mode_manager: Memoizer = Memoizer.new(_get_mouse_mode_manager)
+
 func _process(_delta: float) -> void:
 	if active:
 		# Do not try to check mouse mode yourself, doing so can cause
 		# flip-flopping between two active nodes since changes are applied the
 		# next frame.
-		MouseModeManager.request_mode(priority, mouse_mode)
+		var manager: Node = await _mouse_mode_manager.get_value()
+		if is_instance_valid(manager):
+			MouseModeManager.request_mode(priority, mouse_mode)
+		else:
+			push_error("Failed to request mouse mode; MouseModeManager autoload is not present; did you forget to enable the ProtoJam plugin?")
+
+
+## Fetches the mouse mode manager autoload without referencing its type.
+## 
+## Users should not call this. Use [MouseModeManager] instead.
+func _get_mouse_mode_manager() -> Node:
+	if has_node("/root/MouseModeManager"):
+		return get_node("/root/MouseModeManager")
+	
+	return null
