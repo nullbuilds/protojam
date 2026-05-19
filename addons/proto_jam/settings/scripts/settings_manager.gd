@@ -1,6 +1,6 @@
 @abstract
 class_name SettingsManager
-extends Node
+extends RefCounted
 ## Static game settings manager.
 ## 
 ## Manages low-level storage and retreival of game settings. See
@@ -61,7 +61,7 @@ static func get_raw_setting(setting_key: StringName) -> Variant:
 ## implementation. See [method AbstractSetting.set_value] to write the parsed
 ## value instead.
 ## [br][br]
-##  If a signal has been created for this setting using
+## If a signal has been created for this setting using
 ## [method create_setting_change_signal], it will be emitted if the value has
 ### changed.
 static func set_raw_setting(setting_key: StringName, value: Variant) -> void:
@@ -70,6 +70,20 @@ static func set_raw_setting(setting_key: StringName, value: Variant) -> void:
 	
 	if value != old_value:
 		_emit_setting_changed(setting_key, value)
+
+
+## Clears the value of all settings.
+## 
+## If a signal has been created for a setting using
+## [method create_setting_change_signal], it will be emitted if the setting was
+## not already cleared.
+static func clear_settings() -> void:
+	var old_settings: Dictionary[StringName, Variant] = _settings.duplicate()
+	_settings.clear()
+	
+	for setting_key in old_settings.keys():
+		if null != old_settings.get(setting_key):
+			_emit_setting_changed(setting_key, null)
 
 
 ## Save current settings.
