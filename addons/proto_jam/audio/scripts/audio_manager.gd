@@ -53,7 +53,7 @@ func sync_bus_volume(bus_setting: AudioBusVolumeRangeSetting) -> Error:
 		return error
 	
 	bus_setting.value_changed.connect(_on_bus_volume_changed.unbind(1), \
-			Object.CONNECT_APPEND_SOURCE_OBJECT)
+			CONNECT_APPEND_SOURCE_OBJECT)
 	
 	return Error.OK
 
