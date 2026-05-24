@@ -9,7 +9,10 @@ extends RefCounted
 ## The file settings are saved to can be customized by changing the
 ## [code]addons/proto_jam/settings/file_path[/code] project setting.
 
-static var _settings: Dictionary[StringName, Variant] = {}
+static var _settings: ObservableDictionary = ObservableDictionary.new(
+		_on_setting_added,
+		_on_setting_removed.unbind(1),
+		_on_setting_changed.unbind(1))
 static var _setting_signals: Dictionary[StringName, Signal] = {}
 static var _signal_bus: RefCounted = RefCounted.new()
 
@@ -49,7 +52,7 @@ static func create_setting_change_signal(setting_key: StringName) -> Signal:
 ## implementation. See [method AbstractSetting.get_value] to read the parsed
 ## value instead.
 static func get_raw_setting(setting_key: StringName) -> Variant:
-	return _settings.get(setting_key)
+	return _settings.get_value(setting_key)
 
 
 ## Sets the unparsed value associated with a setting key.
@@ -65,11 +68,7 @@ static func get_raw_setting(setting_key: StringName) -> Variant:
 ## [method create_setting_change_signal], it will be emitted if the value has
 ### changed.
 static func set_raw_setting(setting_key: StringName, value: Variant) -> void:
-	var old_value: Variant = _settings.get(setting_key)
-	_settings.set(setting_key, value)
-	
-	if value != old_value:
-		_emit_setting_changed(setting_key, value)
+	_settings.set_value(setting_key, value)
 
 
 ## Clears the value of all settings.
@@ -78,12 +77,7 @@ static func set_raw_setting(setting_key: StringName, value: Variant) -> void:
 ## [method create_setting_change_signal], it will be emitted if the setting was
 ## not already cleared.
 static func clear_settings() -> void:
-	var old_settings: Dictionary[StringName, Variant] = _settings.duplicate()
 	_settings.clear()
-	
-	for setting_key in old_settings.keys():
-		if null != old_settings.get(setting_key):
-			_emit_setting_changed(setting_key, null)
 
 
 ## Save current settings.
@@ -101,7 +95,7 @@ static func save_settings() -> Error:
 		push_error("Failed to save settings; could not open file \"%s\" for writing; error code %d" % [settings_file_path, error])
 		return error
 	
-	var encoded_data: String = JSON.stringify(_settings, "  ", true)
+	var encoded_data: String = JSON.stringify(_settings.duplicate(), "  ", true)
 	if not file.store_string(encoded_data):
 		var error: Error = file.get_error()
 		push_error("Failed to save settings; could not write to \"%s\"; error code %d" % [settings_file_path, error])
@@ -135,7 +129,7 @@ static func load_settings() -> Error:
 	
 	# Take no action if the file doesn't exist (ie on first play)
 	if not FileAccess.file_exists(settings_file_path):
-		print("Using default settings; no such file \"%s\"" %settings_file_path)
+		print("Using default settings; no such file \"%s\"" % settings_file_path)
 		return Error.OK
 	
 	# Open settings file for reading
@@ -170,13 +164,8 @@ static func load_settings() -> Error:
 		return true)
 	
 	# Update cached settings
-	var _old_settings: Dictionary[StringName, Variant] = _settings.duplicate(false)
+	print("Settings loaded from \"%s\"" % settings_file_path)
 	_settings.assign(json)
-	
-	print("Settings loaded from \"%s\"" %settings_file_path)
-	
-	# Notify listeners of the changes
-	_emit_settings_changed(_settings, _old_settings)
 	
 	return Error.OK
 
@@ -187,32 +176,6 @@ static func _get_settings_file_path() -> String:
 			.get_setting_with_default_override()
 
 
-## Emits previously created change signals for changed settings.
-## 
-## Compares the keys and values of [param new_settings] and [param old_settings]
-## emitting a signal for each key that is no longer defined or whose value has
-## changed. I signal will only be emitted if it was created using
-## [method create_setting_change_signal].
-static func _emit_settings_changed(new_settings: Dictionary[StringName, Variant],
-		old_settings: Dictionary[StringName, Variant]) -> void:
-	# TODO write more efficently
-	var combined_keys: Array[StringName] = new_settings.merged(old_settings).keys()
-	
-	for key in combined_keys:
-		var new_value: Variant = new_settings.get(key)
-		
-		# Explicitly check if old_settings and new_settings have the key before
-		# comparing. Comparing without checking could return true if the new or
-		# old value happens to be the default and the other does not contain the
-		# key.
-		if old_settings.has(key) and new_settings.has(key):
-			var old_value: Variant = old_settings.get(key)
-			if old_value != new_value:
-				_emit_setting_changed(key, new_value)
-		else:
-			_emit_setting_changed(key, new_value)
-
-
 ## Emits a previously created change signal for the given setting.
 ## 
 ## If a signal has been created for this setting using
@@ -220,3 +183,24 @@ static func _emit_settings_changed(new_settings: Dictionary[StringName, Variant]
 static func _emit_setting_changed(setting_key: StringName, value: Variant) -> void:
 	if _setting_signals.has(setting_key):
 		_setting_signals.get(setting_key).emit(value)
+
+
+## Called when a setting is added.
+## 
+## Users should not call this directly.
+static func _on_setting_added(setting_key: StringName, value: Variant) -> void:
+	_emit_setting_changed(setting_key, value)
+
+
+## Called when a setting is removed.
+## 
+## Users should not call this directly.
+static func _on_setting_removed(setting_key: StringName) -> void:
+	_emit_setting_changed(setting_key, null)
+
+
+## Called when a setting is changed.
+## 
+## Users should not call this directly.
+static func _on_setting_changed(setting_key: StringName, value: Variant) -> void:
+	_emit_setting_changed(setting_key, value)
