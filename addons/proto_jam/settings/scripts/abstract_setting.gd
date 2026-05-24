@@ -41,7 +41,9 @@ signal value_changed(value: Variant)
 ## Custom [AbstractSetting] implementations should not typically override this
 ## function. See [method AbstractSetting.from_raw] instead.
 func get_value() -> Variant:
-	return from_raw(SettingsManager.get_raw_setting(setting_key))
+	if not setting_key.is_empty():
+		return from_raw(SettingsManager.get_raw_setting(setting_key))
+	return from_raw(null)
 
 
 ## Sets the value of the setting.
@@ -49,7 +51,8 @@ func get_value() -> Variant:
 ## Custom [AbstractSetting] implementations should not typically override this
 ## function. See [method AbstractSetting.to_raw] instead.
 func set_value(value: Variant):
-	SettingsManager.set_raw_setting(setting_key, to_raw(value))
+	if not setting_key.is_empty():
+		SettingsManager.set_raw_setting(setting_key, to_raw(value))
 
 
 ## Parses a raw setting value into the desired type.
