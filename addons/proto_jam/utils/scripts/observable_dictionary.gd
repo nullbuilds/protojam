@@ -99,6 +99,13 @@ func duplicate(deep: bool = false) -> Dictionary:
 	return _data.duplicate(deep)
 
 
+## Equivalent to [method Dictionary.clear].
+func clear() -> void:
+	var old_data: Dictionary = _data.duplicate()
+	_data.clear()
+	_report_changes(_data, old_data)
+
+
 ## Compares the two dictionaries and invokes the callbacks for any changes.
 ## 
 ## Users should not call this directly.
