@@ -1,6 +1,10 @@
 class_name ObservableDictionary
 extends RefCounted
 ## A dictionary which invokes callbacks when its contents change.
+## 
+## [b]Note:[/b] Unlike [Dictionary], instances of this class do not
+## automatically serialize. To obtain a serializable copy, use
+## [method duplicate].
 
 var _data: Dictionary = {}
 var _key_added: Callable = Callable()
@@ -21,52 +25,32 @@ func _init(
 	_value_changed = value_changed
 
 
-## Returns the list of keys in the dictionary.
-## 
-## [b]Note:[/b] Modifying the returned array does not affect the dictionary.
+## Equivalent to [method Dictionary.keys].
 func keys() -> Array:
 	return _data.keys()
 
 
-## Returns [code]true[/code] if the dictionary is empty (its size is
-## [code]0[/code]).
-## 
-## See also [method size].
+## Equivalent to [method Dictionary.is_empty].
 func is_empty() -> bool:
 	return _data.size()
 
 
-## Returns the number of entries in the dictionary.
-## 
-## Empty dictionaries ([code]{ }[/code]) always return [code]0[/code].
-## 
-## See also [method is_empty].
+## Equivalent to [method Dictionary.size].
 func size() -> int:
 	return _data.size()
 
 
-## Returns [code]true[/code] if the dictionary contains an entry with the given
-## [param key].
-## [br][br]
-## [b]Note:[/b] This method returns [code]true[/code] as long as the [param key]
-## exists, even if its corresponding value is [code]null[/code].
+## Equivalent to [method Dictionary.has].
 func has(key: Variant) -> bool:
 	return _data.has(key)
 
 
-## Returns the corresponding value for the given [param key] in the dictionary.
-## 
-## If the [param key] does not exist, returns [param default], or
-## [code]null[code] if the parameter is omitted.
+## Equivalent to [method Dictionary.get].
 func get_value(key: Variant, default: Variant = null) -> Variant:
 	return _data.get(key, default)
 
 
-## Gets a value and ensures the key is set.
-## 
-## If the [param key] exists in the dictionary, this behaves like [method get].
-## Otherwise, the [param default] value is inserted into the dictionary and
-## returned.
+## Equivalent to [method Dictionary.get_or_add].
 func get_or_add(key: Variant, default: Variant = null) -> Variant:
 	if _data.has(key):
 		return _data.get(key)
@@ -78,8 +62,7 @@ func get_or_add(key: Variant, default: Variant = null) -> Variant:
 	return default
 
 
-## Sets the value of the element at the given [param key] to the given
-## [param value].
+## Equivalent to [method Dictionary.set].
 func set_value(key: Variant, value: Variant) -> void:
 	var had_key: bool = _data.has(key)
 	var old_value: Variant = _data.get(key)
@@ -93,10 +76,7 @@ func set_value(key: Variant, value: Variant) -> void:
 		_key_added.call(key, value)
 
 
-## Removes the dictionary entry by key, if it exists.
-## 
-## Returns [code]true[/code] if the given [param key] existed in the dictionary,
-## otherwise [code]false[/code].
+## Equivalent to [method Dictionary.erase].
 func erase(key: Variant) -> bool:
 	var old_value: Variant = _data.get(key)
 	var removed: bool = _data.erase(key)
@@ -107,14 +87,16 @@ func erase(key: Variant) -> bool:
 	return removed
 
 
-## Overwrites the contents of this dictionary with the provided dictionary.
-## 
-## This operation performs a copy. Changes to the keys/values of the original
-## dictionary will not be reflected here.
+## Equivalent to [method Dictionary.assign].
 func assign(dictionary: Dictionary) -> void:
 	var old_data: Dictionary = _data.duplicate()
 	_data.assign(dictionary)
 	_report_changes(_data, old_data)
+
+
+## Equivalent to [method Dictionary.duplicate].
+func duplicate(deep: bool = false) -> Dictionary:
+	return _data.duplicate(deep)
 
 
 ## Compares the two dictionaries and invokes the callbacks for any changes.
