@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="IntegerSaveData" format=3 uid="uid://k4278ip3rl5r"]
+
+[ext_resource type="Script" uid="uid://ddu7y0pcbewar" path="res://addons/proto_jam/save/scripts/integer_save_data.gd" id="1_lp35c"]
+
+[resource]
+script = ExtResource("1_lp35c")
+save_data_key = &"high_score"
+global = true
+metadata/_custom_type_script = "uid://ddu7y0pcbewar"
