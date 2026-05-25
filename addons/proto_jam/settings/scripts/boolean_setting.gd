@@ -27,8 +27,7 @@ func to_raw(value: Variant) -> Variant:
 
 ## Converts a raw or parsed setting into a boolean.
 ## 
-## Converts the given [param value] into a boolean snapped to [member step_value]
-## within [member min_value] and [member max_value] or returns
+## Converts the given [param value] into a boolean or returns
 ## [member default_value] when the given value is [code]null[/code] or of a
 ## different type.
 func _convert(value: Variant) -> bool:

@@ -3,9 +3,9 @@ class_name AbstractSetting
 extends Resource
 ## Abstract interface for defining a game setting.
 ## 
-## Users should extend this class and implement [method convert_value] to create 
-## custom setting types that will be automatically managed by the
-## [SettingsManager].
+## Users should extend this class and implement [method from_raw] and
+## [method to_raw] to create  custom setting types that will be automatically
+## managed by the [SettingsManager].
 
 ## Emitted when the value of the setting changes.
 signal value_changed(value: Variant)
