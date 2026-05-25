@@ -117,6 +117,24 @@ func save_slot(slot_index: int = -1) -> Error:
 	return error
 
 
+## Deletes a save slot file.
+## 
+## [b]Note:[/b] Only the slot file is removed. Currently loaded data is not
+## affected if the slot is active. To remove both, a calls to
+## [method clear_main_data] and [method clear_metadata] must also be made.
+## [br][br]
+## Users should not call this function directly. See [SaveDataManager] instead.
+func delete_slot(slot_index: int) -> Error:
+	var file_path: String = _get_slot_file_path(slot_index)
+	
+	var error: Error = Error.OK
+	if FileAccess.file_exists(file_path):
+		error = DirAccess.remove_absolute(file_path)
+		if Error.OK != error:
+			push_warning("Failed to delete slot %d's save file \"%s\"; error code %d" % [slot_index, file_path, error])
+	return error
+
+
 ## Reads the value associated with the metadata key.
 ## 
 ## Returns the value for [param metadata_key] if previously set or loaded;

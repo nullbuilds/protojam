@@ -138,6 +138,18 @@ static func save_slot_data(slot_index: int = -1) -> Error:
 	return error
 
 
+## Deletes a save slot file.
+## 
+## [b]Note:[/b] Only the slot file is removed. Currently loaded data is not
+## affected if the slot is active. To remove both, a calls to
+## [method clear_slot_metadata] and [method clear_slot_data] must also be made.
+func delete_slot(slot_index: int) -> Error:
+	_mutex.lock()
+	var error: Error = _slot_data.delete_slot(slot_index)
+	_mutex.unlock()
+	return error
+
+
 ## Reads the value associated with the metadata key.
 ## 
 ## Returns the value for [param metadata_key] if previously set or loaded;
@@ -163,7 +175,10 @@ static func set_slot_metadata_value(
 
 ## Clears the currently loaded slot's metadata (main data is not affected).
 ## 
-## A call to [method save_slot_data] is required to persist the change.
+## [b]Note:[/b] This does not remove the slot save file, only the currently
+## loaded metadata. A call to [method save_slot_data] is required to persist the
+## change. A call to [method delete_slot] is required to remove the slot file
+## entirely.
 static func clear_slot_metadata() -> void:
 	_mutex.lock()
 	_slot_data.clear_metadata()
@@ -172,7 +187,10 @@ static func clear_slot_metadata() -> void:
 
 ## Clears the value of all slot main data (metadata is not affected).
 ## 
-## Users should not call this function directly. See [AbstractSaveData] instead.
+## [b]Note:[/b] This does not remove the slot save file, only the currently
+## loaded data. A call to [method save_slot_data] is required to persist the
+## change. A call to [method delete_slot] is required to remove the slot file
+## entirely.
 static func clear_slot_data() -> void:
 	_mutex.lock()
 	_slot_data.clear_main_data()
