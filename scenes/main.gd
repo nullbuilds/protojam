@@ -13,6 +13,7 @@ const _APPLICATION: PackedScene = preload("uid://df5fs5t16rhiw")
 func _ready() -> void:
 	_start_background_loader()
 	_load_settings()
+	_load_save_data()
 	_setup_audio_manager()
 	_start_application()
 
@@ -34,6 +35,18 @@ func _load_settings() -> void:
 		# Failing to load settings isn't a critical error as the defaults will
 		# still exist but it should be logged for debugging.
 		push_error("Failed to load settings; error code %d" % settings_error)
+
+
+## Attempts to load the game's save data.
+func _load_save_data() -> void:
+	var load_error: Error = SaveDataManager.load_global_data()
+	if not load_error in [Error.OK, Error.ERR_FILE_NOT_FOUND]:
+		push_error("Failed to load global save data; error code %d" % load_error)
+	
+	var slot: int = SaveDataManager.get_active_slot()
+	load_error = SaveDataManager.load_slot_data(slot)
+	if not load_error in [Error.OK, Error.ERR_FILE_NOT_FOUND]:
+		push_error("Failed to load slot %d save data; error code %d" % [slot, load_error])
 
 
 ## Starts the background loading service or exits if it cannot start.
