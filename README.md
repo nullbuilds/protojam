@@ -8,6 +8,7 @@
 ## Features
 
 * :thread: Easy background resource loading
+* :floppy_disk: Save data management
 * :gear: Data-driven game settings
 * :bookmark_tabs: Data-driven credit model
 * :construction_worker: Commonly needed utilities
