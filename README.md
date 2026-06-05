@@ -1,5 +1,9 @@
 <p align="center">
-  <img src="docs/media/protojam_banner.png" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/media/protojam_banner_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="docs/media/protojam_banner.png">
+    <img alt="ProtoJam logo" src="docs/media/protojam_banner.png">
+  </picture>
 </p>
 <p align="center">
   An extensive library for game jams and rapid prototyping in <a href="https://godotengine.org/" target="_blank">Godot</a>
