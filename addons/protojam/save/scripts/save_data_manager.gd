@@ -24,7 +24,7 @@ extends RefCounted
 ##     using [method inspect_slot_metadata].
 ## [br][br]
 ## The directory saves are written to can be customized by changing the
-## [code]addons/proto_jam/save/save_directory[/code] project setting.
+## [code]addons/protojam/save/save_directory[/code] project setting.
 ## [br][br]
 ## All operations are thread-safe.
 

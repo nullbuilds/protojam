@@ -8,7 +8,7 @@ extends Node
 @warning_ignore("unused_private_class_variable")
 static var _settings_file_path_setting: PluginProjectSetting = \
 		PluginProjectSetting.new(
-				"addons/proto_jam/settings/file_path",
+				"addons/protojam/settings/file_path",
 				"user://settings.json",
 				TYPE_STRING,
 				PROPERTY_HINT_FILE_PATH,

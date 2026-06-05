@@ -7,7 +7,7 @@ extends RefCounted
 ## [AbstractSetting] for methods to read/change settings.
 ## [br][br]
 ## The file settings are saved to can be customized by changing the
-## [code]addons/proto_jam/settings/file_path[/code] project setting.
+## [code]addons/protojam/settings/file_path[/code] project setting.
 
 static var _settings: ObservableDictionary = ObservableDictionary.new(
 		_on_setting_added,
