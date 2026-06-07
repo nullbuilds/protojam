@@ -1,8 +1,8 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/media/protojam_banner_dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="docs/media/protojam_banner.png">
-    <img alt="ProtoJam logo" src="docs/media/protojam_banner.png">
+	<source media="(prefers-color-scheme: dark)" srcset="docs/media/protojam_banner_dark.png">
+	<source media="(prefers-color-scheme: light)" srcset="docs/media/protojam_banner.png">
+	<img alt="ProtoJam logo" src="docs/media/protojam_banner.png">
   </picture>
 </p>
 <p align="center">

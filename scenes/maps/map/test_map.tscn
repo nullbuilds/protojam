@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dqjbk0gkloecc"]
 
-[ext_resource type="Material" uid="uid://b5r46tx4p3w61" path="res://addons/proto_jam/materials/resources/materials/world_grid_dark_material.tres" id="1_arjbw"]
-[ext_resource type="Script" uid="uid://b7gvus0wbhkxn" path="res://addons/proto_jam/audio/scripts/global_music_player.gd" id="2_uxif6"]
+[ext_resource type="Script" uid="uid://b7gvus0wbhkxn" path="res://addons/protojam/audio/scripts/global_music_player.gd" id="1_bsy77"]
+[ext_resource type="Material" uid="uid://b5r46tx4p3w61" path="res://addons/protojam/materials/resources/materials/world_grid_dark_material.tres" id="2_6s6gy"]
+[ext_resource type="PackedScene" uid="uid://bp63lfrc6p5hf" path="res://scenes/player/player.tscn" id="3_6s6gy"]
 
 [sub_resource type="Environment" id="Environment_uxif6"]
 background_mode = 1
@@ -9,15 +10,12 @@ background_color = Color(0.2816, 0.5026133, 0.64, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.7162962, 0.7162962, 0.7162962, 1)
 
-[node name="Level" type="Node3D" unique_id=1913786750]
+[node name="TestMap" type="Node3D" unique_id=1913786750]
 
 [node name="GlobalMusicPlayer" type="Node" parent="." unique_id=1685634276]
-script = ExtResource("2_uxif6")
+script = ExtResource("1_bsy77")
 music_path = "uid://cyt0x6ojmrrqm"
 metadata/_custom_type_script = "uid://b7gvus0wbhkxn"
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=957711138]
-transform = Transform3D(1, 0, 0, 0, 0.9659259, 0.25881907, 0, -0.25881907, 0.9659258, 0, 2, 3)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=310269771]
 environment = SubResource("Environment_uxif6")
@@ -27,5 +25,8 @@ transform = Transform3D(0.25881907, -0.4829629, 0.8365163, 0, 0.8660254, 0.50000
 
 [node name="Floor" type="CSGBox3D" parent="." unique_id=1516907838]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-size = Vector3(10, 1, 10)
-material = ExtResource("1_arjbw")
+use_collision = true
+size = Vector3(20, 1, 20)
+material = ExtResource("2_6s6gy")
+
+[node name="Player" parent="." unique_id=1755428594 instance=ExtResource("3_6s6gy")]

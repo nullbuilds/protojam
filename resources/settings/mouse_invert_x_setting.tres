@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BooleanSetting" format=3 uid="uid://dato2ecxbihmk"]
+
+[ext_resource type="Script" uid="uid://bbdecywegva0h" path="res://addons/protojam/settings/scripts/boolean_setting.gd" id="1_uvyov"]
+
+[resource]
+script = ExtResource("1_uvyov")
+setting_key = &"mouse_invert_x"
+metadata/_custom_type_script = "uid://bbdecywegva0h"

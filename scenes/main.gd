@@ -7,6 +7,7 @@ extends Node
 
 const _MASTER_VOLUME_SETTING: AudioBusVolumeRangeSetting = preload("uid://bcxbqwt2pbfrx")
 const _MUSIC_VOLUME_SETTING: AudioBusVolumeRangeSetting = preload("uid://q75uxrblo753")
+const _SFX_VOLUME_SETTING: AudioBusVolumeRangeSetting = preload("uid://pdxf7akojdkv")
 const _APPLICATION: PackedScene = preload("uid://df5fs5t16rhiw")
 
 ## Perform initial setup like loading settings.
@@ -64,6 +65,7 @@ func _setup_audio_manager() -> void:
 	# Configure the audio manager to monitor and apply these settings
 	AudioManager.sync_bus_volume(_MASTER_VOLUME_SETTING)
 	AudioManager.sync_bus_volume(_MUSIC_VOLUME_SETTING)
+	AudioManager.sync_bus_volume(_SFX_VOLUME_SETTING)
 
 
 ## Starts the application.

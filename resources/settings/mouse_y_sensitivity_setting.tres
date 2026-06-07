@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RangeSetting" format=3 uid="uid://bx8g37jyib7om"]
+
+[ext_resource type="Script" uid="uid://cu6o2wtk5tnbo" path="res://addons/protojam/settings/scripts/range_setting.gd" id="1_wit1e"]
+
+[resource]
+script = ExtResource("1_wit1e")
+min_value = 0.05
+max_value = 0.33
+default_value = 0.2
+setting_key = &"mouse_y_sensitivity"
+metadata/_custom_type_script = "uid://cu6o2wtk5tnbo"

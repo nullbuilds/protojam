@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c82jdhh45n2n8"]
 
 [ext_resource type="Script" uid="uid://cqq45f6xjjfw0" path="res://scenes/ui/menu/menu.gd" id="1_h1w4e"]
-[ext_resource type="Script" uid="uid://b7gvus0wbhkxn" path="res://addons/proto_jam/audio/scripts/global_music_player.gd" id="2_q18yf"]
-[ext_resource type="Script" uid="uid://dnf7o262ku7rc" path="res://addons/proto_jam/input/scripts/mouse_mode_controller.gd" id="3_ldhvw"]
+[ext_resource type="Script" uid="uid://b7gvus0wbhkxn" path="res://addons/protojam/audio/scripts/global_music_player.gd" id="2_q18yf"]
+[ext_resource type="Script" uid="uid://dnf7o262ku7rc" path="res://addons/protojam/input/scripts/mouse_mode_controller.gd" id="3_ldhvw"]
 
 [node name="Menu" type="CanvasLayer" unique_id=2083191215]
 script = ExtResource("1_h1w4e")

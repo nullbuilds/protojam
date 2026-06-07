@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Encounter" format=3 uid="uid://bhnuu7p2t1q24"]
+
+[ext_resource type="Script" uid="uid://b2wta4f6uppwa" path="res://scripts/game/encounter.gd" id="1_ueibd"]
+
+[resource]
+script = ExtResource("1_ueibd")
+map_path = "uid://dqjbk0gkloecc"
+background_music = "uid://csad32essx2pi"
+metadata/_custom_type_script = "uid://b2wta4f6uppwa"

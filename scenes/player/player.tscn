@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://bp63lfrc6p5hf"]
+
+[ext_resource type="Script" uid="uid://dnr61i0crdnbs" path="res://scripts/player/player_camera.gd" id="1_dovo2"]
+[ext_resource type="Script" uid="uid://bmsun6jkqccyh" path="res://scenes/player/player.gd" id="1_gmlin"]
+[ext_resource type="Script" uid="uid://dnf7o262ku7rc" path="res://addons/protojam/input/scripts/mouse_mode_controller.gd" id="2_0owmy"]
+[ext_resource type="Script" uid="uid://dmvlugoernyre" path="res://addons/protojam/damage/scripts/health_component.gd" id="2_75vfm"]
+[ext_resource type="Resource" uid="uid://ccwwro2q1x255" path="res://resources/settings/field_of_view_setting.tres" id="2_gmlin"]
+[ext_resource type="Script" uid="uid://0f5q35nel3t3" path="res://addons/protojam/damage/scripts/hit_box_3d.gd" id="4_p47bc"]
+[ext_resource type="Script" uid="uid://dlg6yy8n74t2a" path="res://scripts/player/player_input.gd" id="4_qek5x"]
+[ext_resource type="Script" uid="uid://b6vbspfe2x06i" path="res://addons/protojam/damage/scripts/damage_box_3d.gd" id="5_75vfm"]
+[ext_resource type="Resource" uid="uid://c7mop7rlmgxjm" path="res://resources/settings/mouse_x_sensitivity_setting.tres" id="5_fm80t"]
+[ext_resource type="Resource" uid="uid://bx8g37jyib7om" path="res://resources/settings/mouse_y_sensitivity_setting.tres" id="6_gx1jg"]
+[ext_resource type="Resource" uid="uid://dato2ecxbihmk" path="res://resources/settings/mouse_invert_x_setting.tres" id="7_ugbui"]
+[ext_resource type="Resource" uid="uid://cap200fhnjuxo" path="res://resources/settings/mouse_invert_y_setting.tres" id="8_fcs02"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lvxji"]
+radius = 0.25
+height = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0owmy"]
+radius = 0.2
+height = 1.0
+
+[node name="Player" type="CharacterBody3D" unique_id=1755428594]
+script = ExtResource("1_gmlin")
+
+[node name="MouseModeController" type="Node" parent="." unique_id=492209105]
+script = ExtResource("2_0owmy")
+metadata/_custom_type_script = "uid://dnf7o262ku7rc"
+
+[node name="HealthComponent" type="Node" parent="." unique_id=2026200272]
+unique_name_in_owner = true
+script = ExtResource("2_75vfm")
+metadata/_custom_type_script = "uid://dmvlugoernyre"
+
+[node name="PlayerInput" type="Node" parent="." unique_id=1763596990]
+unique_name_in_owner = true
+script = ExtResource("4_qek5x")
+mouse_x_sensitivity_setting = ExtResource("5_fm80t")
+mouse_y_sensitivity_setting = ExtResource("6_gx1jg")
+mouse_invert_x_setting = ExtResource("7_ugbui")
+mouse_invert_y_setting = ExtResource("8_fcs02")
+metadata/_custom_type_script = "uid://dlg6yy8n74t2a"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=478790180]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_lvxji")
+
+[node name="PlayerCamera" type="Node3D" parent="." unique_id=1518831024]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+script = ExtResource("1_dovo2")
+field_of_view_setting = ExtResource("2_gmlin")
+metadata/_custom_type_script = "uid://dnr61i0crdnbs"
+
+[node name="HitBox3D" type="Node3D" parent="." unique_id=1351629211 node_paths=PackedStringArray("damage_parent")]
+script = ExtResource("4_p47bc")
+damage_parent = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://0f5q35nel3t3"
+
+[node name="DamageBox3D" type="Area3D" parent="HitBox3D" unique_id=1756157162]
+script = ExtResource("5_75vfm")
+metadata/_custom_type_script = "uid://b6vbspfe2x06i"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox3D/DamageBox3D" unique_id=768512007]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_0owmy")

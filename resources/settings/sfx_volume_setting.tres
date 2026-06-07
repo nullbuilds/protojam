@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AudioBusVolumeRangeSetting" format=3 uid="uid://pdxf7akojdkv"]
+
+[ext_resource type="Script" uid="uid://dfh1tdnj5ex7u" path="res://addons/protojam/settings/scripts/audio_bus_volume_setting.gd" id="1_jynwi"]
+
+[resource]
+script = ExtResource("1_jynwi")
+bus_name = &"SFX"
+setting_key = &"sfx_volume"
+metadata/_custom_type_script = "uid://dfh1tdnj5ex7u"
