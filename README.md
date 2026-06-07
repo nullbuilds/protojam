@@ -1,5 +1,9 @@
 <p align="center">
-  <img src="docs/media/protojam_banner.png" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/media/protojam_banner_dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="docs/media/protojam_banner.png">
+    <img alt="ProtoJam logo" src="docs/media/protojam_banner.png">
+  </picture>
 </p>
 <p align="center">
   An extensive library for game jams and rapid prototyping in <a href="https://godotengine.org/" target="_blank">Godot</a>
@@ -26,7 +30,9 @@ Tested against Godot 4.6.
 
 ## Usage
 
-Each class is extensively documented. Check their docs in the Godot IDE for more details.
+New to ProtoJam? Check out the [wiki] for help getting started.
+
+Looking for more technical details? Every class is extensively documented with docstrings searchable from the Godot IDE.
 
 ## FAQ
 
@@ -37,7 +43,7 @@ This addon is quite large which may be against the rules for some jams. Always c
 
 <details>
 <summary>Can I use this in a commercial game?</summary>
-Yes! ...but you shouldn't. This addon is optimized for rapid development. Performance is not a primary concern nor is full compatibility.
+Yes! ...but you shouldn't. This addon is optimized for rapid development. Performance is not a primary concern nor is backwards compatibility.
 </details>
 
 <details>
@@ -60,3 +66,4 @@ Proudly made for humans, by humans [#NoAI][no-ai]
 [contributing-guide]: .github/CONTRIBUTING.md
 [no-ai]: https://itch.io/games/tag-no-ai
 [kenney]: https://kenney.nl/
+[wiki]: https://github.com/nullbuilds/protojam/wiki
