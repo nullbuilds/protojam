@@ -19,7 +19,7 @@ var _signal_bus: RefCounted = RefCounted.new()
 ## [br][br]
 ## Users should avoid calling this method directly.
 func create_save_data_change_signal(save_data_key: StringName) -> Signal:
-	return BaseUtils.get_or_create( \
+	return CollectionUtils.get_or_create( \
 			_save_data_signals, \
 			save_data_key, \
 			func() -> Signal:
@@ -74,7 +74,7 @@ static func _load_from_file(file_path: String, data: Dictionary[StringName, Vari
 		return Error.ERR_PARSE_ERROR
 	
 	# Remove loaded keys that aren't strings or are empty (ie aren't valid)
-	json = BaseUtils.filterd(json, func(key: Variant, _value: Variant) -> bool:
+	json = CollectionUtils.filterd(json, func(key: Variant, _value: Variant) -> bool:
 		if key is not String and key is not StringName:
 			var type: String = type_string(typeof(key))
 			push_warning("Failed to load save data; key \"%s\" in \"%s\" is not a string; was \"%s\"" % [key, file_path, type])

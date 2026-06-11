@@ -1,8 +1,8 @@
 @tool
 @abstract
-class_name BaseUtils
+class_name CollectionUtils
 extends Node
-## Utilities for common base operations.
+## Utilities for common collection operations.
 ## 
 ## This class provides static functions for commonly performed operations on
 ## base data types like dictionaries and arrays.

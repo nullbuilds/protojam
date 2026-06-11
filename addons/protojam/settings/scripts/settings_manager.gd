@@ -29,7 +29,7 @@ static var _signal_bus: RefCounted = RefCounted.new()
 ## should avoid calling this method directly and instead use
 ## [signal AbstractSetting.value_changed].
 static func create_setting_change_signal(setting_key: StringName) -> Signal:
-	return BaseUtils.get_or_create( \
+	return CollectionUtils.get_or_create( \
 			_setting_signals, \
 			setting_key, \
 			func() -> Signal:
@@ -153,7 +153,7 @@ static func load_settings() -> Error:
 		return Error.ERR_PARSE_ERROR
 	
 	# Remove loaded keys that aren't strings or are empty (ie aren't valid)
-	json = BaseUtils.filterd(json, func(key: Variant, _value: Variant) -> bool:
+	json = CollectionUtils.filterd(json, func(key: Variant, _value: Variant) -> bool:
 		if key is not String and key is not StringName:
 			var type: String = type_string(typeof(key))
 			push_warning("Failed to load setting; key \"%s\" in \"%s\" is not a string; was \"%s\"" % [key, settings_file_path, type])
