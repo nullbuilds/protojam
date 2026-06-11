@@ -158,7 +158,7 @@ class _ResourceLoaderThread extends Thread:
 			# Monitor progress of loading resources
 			var loaded_resource: Array[AsyncResourceHandle] = \
 					_monitor_pending_resources(loading_resources)
-			BaseUtils.remove_all(loading_resources, loaded_resource)
+			CollectionUtils.remove_all(loading_resources, loaded_resource)
 	
 	
 	## Starts loading the given resources.
